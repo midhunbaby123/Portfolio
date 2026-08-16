@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midhun Baby — Digital Marketing × Technology</title>
+<meta name="description" content="Midhun Baby — Digital Marketing professional with a Computer Science and software development background. Strategy, technology, UX, and data working together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --paper-dim:#F3F1EA;
+    --ink:#14181F;
+    --ink-soft:#4A5058;
+    --line:#DEDACD;
+
+    /* Expanded palette — one accent per discipline, used consistently */
+    --pine:#2F5D50;      /* SEO / strategy */
+    --pine-deep:#1F3F37;
+    --brass:#B9924E;     /* web / UX */
+    --clay:#C1602B;      /* social / content */
+    --indigo:#3A4E8C;    /* email / analytics */
+    --rose:#A63A50;      /* tech / AI */
+
+    --card:#FFFFFE;
+    --radius:6px;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0 0 .4em;
+    line-height:1.12;
+    letter-spacing:-.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--pine);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .tag::before{content:"//";color:var(--brass);}
+  :focus-visible{outline:2px solid var(--pine);outline-offset:3px;}
+  button{font-family:inherit;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,247,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:66px;
+  }
+  .brand{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;font-size:.95rem;
+    text-decoration:none;letter-spacing:-.02em;
+  }
+  .brand span{color:var(--pine);}
+  .navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .navlinks a{
+    text-decoration:none;font-size:.86rem;font-weight:500;
+    color:var(--ink-soft);position:relative;padding:4px 0;
+    transition:color .2s;
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;
+    background:var(--pine);transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .burger{
+    display:none;background:none;border:1px solid var(--line);
+    border-radius:var(--radius);width:40px;height:40px;
+    cursor:pointer;position:relative;
+  }
+  .burger span, .burger span::before, .burger span::after{
+    content:"";position:absolute;left:9px;right:9px;height:1.5px;background:var(--ink);
+    transition:.25s;
+  }
+  .burger span{top:19px;}
+  .burger span::before{top:-7px;}
+  .burger span::after{top:7px;}
+  .burger.open span{background:transparent;}
+  .burger.open span::before{transform:rotate(45deg) translate(5px,5px);}
+  .burger.open span::after{transform:rotate(-45deg) translate(5px,-5px);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 84px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero .tag{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 4rem);
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--pine);
+  }
+  .hero p.lede{
+    font-size:1.13rem;color:var(--ink-soft);max-width:52ch;margin:22px 0 36px;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.82rem;letter-spacing:.02em;
+    padding:14px 26px;border-radius:var(--radius);
+    text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+    transition:transform .2s ease, background .2s ease;
+    border:1px solid var(--ink);
+    cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--pine-deep);border-color:var(--pine-deep);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--paper-dim);}
+
+  .hero-art{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    aspect-ratio:4/5;box-shadow:0 30px 60px -30px rgba(20,24,31,.4);
+  }
+  .hero-art img{width:100%;height:100%;object-fit:cover;}
+  .hero-art::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(160deg, rgba(47,93,80,.28), rgba(166,58,80,.22) 60%, transparent);
+  }
+  .hero-blob{
+    position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:0;
+  }
+  .hero-blob.b1{width:340px;height:340px;background:var(--brass);top:-120px;left:-100px;}
+  .hero-blob.b2{width:260px;height:260px;background:var(--indigo);bottom:-100px;right:10%;}
+
+  .stack-strip{
+    margin-top:56px;display:flex;gap:0;flex-wrap:wrap;
+    border-top:1px solid var(--line);
+  }
+  .stack-strip div{
+    flex:1 1 160px;padding:18px 4px 0;border-left:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink-soft);
+  }
+  .stack-strip div:first-child{border-left:none;}
+  .stack-strip strong{display:block;color:var(--ink);font-family:'Inter';font-weight:600;font-size:.92rem;margin-top:2px;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:88px 0;border-bottom:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.4rem);}
+  .section-head p{color:var(--ink-soft);margin-top:10px;}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .cap-card{
+    background:var(--card);padding:28px 24px;border-radius:var(--radius);
+    border:1px solid var(--line);border-top:3px solid var(--accent, var(--pine));
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cap-card:hover{transform:translateY(-4px);box-shadow:0 16px 28px -20px rgba(20,24,31,.35);}
+  .cap-card .icon{
+    width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--accent, var(--pine)) 16%, transparent);
+    color:var(--accent, var(--pine));font-size:1.1rem;margin-bottom:14px;
+  }
+  .cap-card h3{font-size:1.12rem;margin:0 0 8px;}
+  .cap-card p{color:var(--ink-soft);font-size:.92rem;margin:0;}
+
+  /* ---------- APPROACH ---------- */
+  .approach-log{
+    font-family:'JetBrains Mono',monospace;
+    border:1px solid var(--line);background:var(--card);border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .approach-row{
+    display:grid;grid-template-columns:56px 160px 1fr;gap:18px;
+    padding:18px 24px;border-top:1px solid var(--line);align-items:baseline;
+    border-left:3px solid var(--accent, var(--pine));
+  }
+  .approach-row:first-child{border-top:none;}
+  .approach-row .step-idx{color:var(--brass);font-size:.8rem;}
+  .approach-row .step-name{color:var(--accent, var(--pine));font-weight:600;font-size:.85rem;}
+  .approach-row .step-desc{color:var(--ink-soft);font-family:'Inter';font-size:.94rem;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .filter-btn{
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;
+    padding:8px 16px;border:1px solid var(--line);background:var(--card);
+    border-radius:999px;cursor:pointer;color:var(--ink-soft);transition:.2s;
+  }
+  .filter-btn:hover{border-color:var(--pine);color:var(--ink);}
+  .filter-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+  .proj-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;transition:transform .25s ease, box-shadow .25s ease;
+    display:flex;flex-direction:column;
+  }
+  .proj-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px -18px rgba(20,24,31,.35);}
+  .proj-thumb{
+    height:170px;position:relative;overflow:hidden;
+    background:var(--paper-dim);
+  }
+  .proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .proj-card:hover .proj-thumb img{transform:scale(1.06);}
+  .proj-thumb .shade{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(20,24,31,.55), transparent 55%);
+  }
+  .proj-thumb span{
+    position:absolute;left:14px;bottom:12px;
+    font-family:'JetBrains Mono',monospace;color:#fff;font-size:.72rem;
+  }
+  .proj-body{padding:22px;flex:1;display:flex;flex-direction:column;gap:10px;}
+  .proj-body h3{font-size:1.1rem;}
+  .proj-cat{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent, var(--brass));text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+  .proj-body p{color:var(--ink-soft);font-size:.9rem;margin:0;flex:1;}
+  .proj-skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+  .proj-skills span{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;background:var(--paper-dim);
+    padding:4px 8px;border-radius:999px;color:var(--ink-soft);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start;}
+  .about-photo{
+    border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1;
+    border:1px solid var(--line);box-shadow:0 20px 40px -26px rgba(20,24,31,.35);
+  }
+  .about-photo img{width:100%;height:100%;object-fit:cover;}
+  .about-grid p{color:var(--ink-soft);margin:0 0 16px;}
+  .bring-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .bring-list li{
+    display:flex;gap:14px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line);
+    font-size:.95rem;position:relative;padding-left:16px;
+  }
+  .bring-list li::before{
+    content:"";position:absolute;left:0;top:6px;width:7px;height:7px;border-radius:50%;
+    background:var(--dot, var(--pine));
+  }
+  .bring-list li strong{font-family:'Fraunces';font-weight:500;min-width:170px;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .skill-col{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;border-top:3px solid var(--accent, var(--pine));
+  }
+  .skill-col h4{font-family:'JetBrains Mono',monospace;font-size:.78rem;text-transform:uppercase;color:var(--accent, var(--pine));letter-spacing:.05em;font-weight:600;margin-bottom:14px;}
+  .skill-col ul{list-style:none;margin:0;padding:0;}
+  .skill-col li{
+    padding:9px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink-soft);
+  }
+  .skill-col li:first-child{border-top:none;}
+
+  /* ---------- RESUME ---------- */
+  .resume-block{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line);}
+  .resume-block:last-child{border-bottom:1px solid var(--line);}
+  .resume-block .rlabel{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--brass);text-transform:uppercase;letter-spacing:.05em;}
+  .resume-block h4{font-size:1.02rem;margin:0 0 4px;}
+  .resume-block .meta{color:var(--ink-soft);font-size:.85rem;margin-bottom:6px;}
+  .resume-block p{margin:0;color:var(--ink-soft);font-size:.92rem;}
+
+  /* ---------- REFLECTIONS ---------- */
+  .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .blog-card{border:1px solid var(--line);background:var(--card);overflow:hidden;border-radius:var(--radius);transition:.2s;}
+  .blog-card:hover{border-color:var(--pine);transform:translateY(-3px);}
+  .blog-thumb{height:120px;}
+  .blog-thumb img{width:100%;height:100%;object-fit:cover;}
+  .blog-body{padding:22px;}
+  .blog-meta{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ink-soft);display:flex;gap:10px;margin-bottom:12px;}
+  .blog-card h3{font-size:1.05rem;}
+  .blog-card p{color:var(--ink-soft);font-size:.88rem;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+  .cert-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .cert-card h3 { font-size: 1.1rem; margin: 0; }
+  .cert-card .issuer { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--pine); text-transform: uppercase; font-weight: 600; }
+  .cert-card .label { display: inline-block; padding: 4px 8px; background: var(--paper-dim); color: var(--ink-soft); font-size: .65rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cert-card p { font-size: .9rem; color: var(--ink-soft); margin: 0 0 16px 0; flex: 1; }
+
+  /* ---------- TESTIMONIALS (Project Feedback) ---------- */
+  .testim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .testim-card { background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--brass); padding: 24px; border-radius: var(--radius); display: flex; flex-direction: column; justify-content: space-between; }
+  .testim-card p { font-style: italic; color: var(--ink-soft); margin: 0 0 16px; font-size: .95rem; line-height: 1.6; }
+  .testim-author { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--ink); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  .contact-grid h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:12ch;}
+  .contact-grid p.lede{color:var(--ink-soft);max-width:42ch;}
+  .clinks{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+  .clinks li{border-top:1px solid var(--line);}
+  .clinks li:last-child{border-bottom:1px solid var(--line);}
+  .clinks a{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 2px;text-decoration:none;font-size:.98rem;
+  }
+  .clinks a .k{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--brass);text-transform:uppercase;}
+  .clinks a:hover{color:var(--pine);}
+
+  form.contact-form{display:flex;flex-direction:column;gap:18px;}
+  .field label{
+    display:block;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+    text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:8px;
+  }
+  .field input, .field textarea{
+    width:100%;border:1px solid var(--line);background:var(--card);
+    padding:12px 14px;font-family:'Inter';font-size:.94rem;border-radius:var(--radius);
+    color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--pine);outline:none;}
+  .field .err{color:#B4442E;font-size:.78rem;margin-top:6px;display:none;font-family:'JetBrains Mono',monospace;}
+  .field.invalid .err{display:block;}
+  .field.invalid input, .field.invalid textarea{border-color:#B4442E;}
+  .form-status{font-family:'JetBrains Mono',monospace;font-size:.82rem;margin-top:4px;min-height:1.2em;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:48px 0 40px;}
+  .foot-wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;}
+  footer .brand{font-size:1.1rem;}
+  footer .tagline{color:var(--ink-soft);font-size:.85rem;margin-top:6px;}
+  .foot-links{display:flex;gap:22px;list-style:none;padding:0;margin:0;}
+  .foot-links a{text-decoration:none;font-size:.85rem;color:var(--ink-soft);}
+  .foot-links a:hover{color:var(--pine);}
+  .copyright{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink-soft);margin-top:28px;border-top:1px solid var(--line);padding-top:20px;}
+
+  @media (max-width:860px){
+    .navlinks{
+      position:fixed;top:66px;left:0;right:0;background:var(--paper);
+      flex-direction:column;gap:0;border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+    }
+    .navlinks.open{max-height:520px;}
+    .navlinks a{display:block;padding:16px 28px;border-top:1px solid var(--line);}
+    .navlinks a::after{display:none;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;aspect-ratio:16/9;}
+    .cap-grid{grid-template-columns:1fr;}
+    .about-grid, .contact-grid{grid-template-columns:1fr;gap:36px;}
+    .about-photo{max-width:260px;}
+    .skill-cols{grid-template-columns:repeat(2,1fr);}
+    .approach-row{grid-template-columns:36px 1fr;}
+    .approach-row .step-name{grid-column:2;}
+    .approach-row .step-desc{grid-column:2;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{transition:none;opacity:1;transform:none;}
+    .btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="brand">midhun<span>.</span>baby</a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#reflections">Reflections</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HOME / HERO -->
+  <section class="hero" id="home">
+    <div class="hero-blob b1"></div>
+    <div class="hero-blob b2"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">digital_marketing × technology</span>
+        <h1>Strategy that <em>ships</em> like code.</h1>
+        <p class="lede">I'm Midhun Baby — I combine marketing strategy, technology, UX, and data to create digital experiences that help businesses grow.</p>
+        <div class="cta-row">
+          <a href="#portfolio" class="btn btn-primary">View my work →</a>
+        </div>
+        <div class="stack-strip">
+          <div><strong>2 years</strong>software development, India</div>
+          <div><strong>B.Tech CS</strong>APJ Abdul Kalam Technological University</div>
+          <div><strong>Digital Marketing</strong>current focus, NorQuest College</div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="https://picsum.photos/seed/midhun-hero/700/900" alt="Placeholder hero image — replace with your own photo or brand shot">
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">what I do</span>
+        <h2>Capabilities</h2>
+        <p>A technical background means I don't just plan marketing — I can build, measure, and automate it too.</p>
+      </div>
+      <div class="cap-grid reveal">
+        <div class="cap-card" style="--accent:var(--pine)"><div class="icon">◎</div><h3>SEO &amp; Digital Strategy</h3><p>Research-led strategy that connects business goals to search visibility.</p></div>
+        <div class="cap-card" style="--accent:var(--clay)"><div class="icon">✦</div><h3>Social Media &amp; Content</h3><p>Content systems built around a brand's actual voice and audience.</p></div>
+        <div class="cap-card" style="--accent:var(--indigo)"><div class="icon">✉</div><h3>Email Marketing</h3><p>Lifecycle campaigns and landing pages designed to convert, not just look nice.</p></div>
+        <div class="cap-card" style="--accent:var(--brass)"><div class="icon">◨</div><h3>Web &amp; UX</h3><p>I build the sites I market — Wix, Shopify, and custom front-ends.</p></div>
+        <div class="cap-card" style="--accent:var(--indigo)"><div class="icon">▤</div><h3>Analytics</h3><p>Google Analytics and Tag Manager setups that turn data into decisions.</p></div>
+        <div class="cap-card" style="--accent:var(--rose)"><div class="icon">◆</div><h3>Technology &amp; AI</h3><p>Automation and AI tooling applied to real marketing workflows.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">how I work</span>
+        <h2>My approach</h2>
+      </div>
+      <div class="approach-log reveal">
+        <div class="approach-row" style="--accent:var(--pine)"><span class="step-idx">01</span><span class="step-name">Discover</span><span class="step-desc">Understand the business, the audience, and what "growth" actually means for this project.</span></div>
+        <div class="approach-row" style="--accent:var(--clay)"><span class="step-idx">02</span><span class="step-name">Strategize</span><span class="step-desc">Turn research into a clear plan — channels, priorities, and what success looks like.</span></div>
+        <div class="approach-row" style="--accent:var(--brass)"><span class="step-idx">03</span><span class="step-name">Create</span><span class="step-desc">Build the site, content, or campaign — with an eye for both design and technical execution.</span></div>
+        <div class="approach-row" style="--accent:var(--indigo)"><span class="step-idx">04</span><span class="step-name">Measure</span><span class="step-desc">Track what matters with analytics that are set up correctly from day one.</span></div>
+        <div class="approach-row" style="--accent:var(--rose)"><span class="step-idx">05</span><span class="step-name">Improve</span><span class="step-desc">Use what the data shows to refine the next iteration.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">selected work</span>
+        <h2>Portfolio</h2>
+        <p>Real projects, real constraints.</p>
+      </div>
+      <div class="proj-filter reveal" id="projFilter"></div>
+      <div class="proj-grid reveal" id="projGrid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">who I am</span>
+        <h2>About</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-photo">
+          <img src="https://ui-avatars.com/api/?name=Midhun+Baby&background=2F5D50&color=ffffff&size=500&bold=true&font-size=0.38" alt="Placeholder headshot for Midhun Baby — replace with a real photo">
+        </div>
+        <div>
+          <h3 style="font-size:1.2rem;">My story</h3>
+          <p>I started out in Computer Science, spending two years as a Software Development Engineer at Zdistancelab in Trivandrum, Kerala. Working closely with websites, systems, and data gave me a technical foundation that most marketers don't have.</p>
+          <p>I'm now building a career in Digital Marketing at NorQuest College — bringing that technical thinking into strategy, content, and campaigns, rather than leaving it behind.</p>
+          <h3 style="font-size:1.2rem;margin-top:30px;">Career goal</h3>
+          <p>My goal is to work as a Digital Marketer who combines technology and marketing to help businesses grow — someone who can plan the strategy and also understand (or build) what's happening under the hood.</p>
+          <h3 style="font-size:1.2rem;margin-top:30px;">What I bring</h3>
+          <ul class="bring-list">
+            <li style="--dot:var(--pine)"><strong>Technical thinking</strong><span>Understanding how websites and systems actually work.</span></li>
+            <li style="--dot:var(--clay)"><strong>Marketing strategy</strong><span>Connecting campaigns to real business goals.</span></li>
+            <li style="--dot:var(--brass)"><strong>Creative problem solving</strong><span>Finding practical solutions under real constraints.</span></li>
+            <li style="--dot:var(--indigo)"><strong>Data &amp; analytics</strong><span>Reading performance data and acting on it.</span></li>
+            <li style="--dot:var(--rose)"><strong>UX &amp; digital experiences</strong><span>Designing and building the experience, not just promoting it.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">toolkit</span>
+        <h2>Skills</h2>
+      </div>
+      <div class="skill-cols reveal">
+        <div class="skill-col" style="--accent:var(--pine)">
+          <h4>Digital Marketing</h4>
+          <ul><li>SEO</li><li>Content Marketing</li><li>Social Media Marketing</li><li>Email Marketing</li><li>Digital Strategy</li></ul>
+        </div>
+        <div class="skill-col" style="--accent:var(--indigo)">
+          <h4>Analytics</h4>
+          <ul><li>Google Analytics</li><li>Google Tag Manager</li><li>Keyword Research</li><li>Performance Analysis</li></ul>
+        </div>
+        <div class="skill-col" style="--accent:var(--brass)">
+          <h4>Web &amp; UX</h4>
+          <ul><li>Website Development</li><li>Wix</li><li>Shopify</li><li>UX Research</li><li>Wireframing</li><li>Prototyping</li></ul>
+        </div>
+        <div class="skill-col" style="--accent:var(--rose)">
+          <h4>Technology</h4>
+          <ul><li>HTML / CSS</li><li>JavaScript</li><li>Python</li><li>AI Tools</li><li>Automation</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">career so far</span>
+        <h2>Resume</h2>
+        <p>Digital Marketing is my professional focus — software development is the technical strength behind it.</p>
+      </div>
+      <div class="reveal">
+        <div class="resume-block">
+          <span class="rlabel">Education</span>
+          <div>
+            <h4>Digital Marketing — NorQuest College</h4>
+            <div class="meta">Current</div>
+            <p>Studying digital marketing strategy, tools, and campaign execution.</p>
+          </div>
+        </div>
+        <div class="resume-block">
+          <span class="rlabel"></span>
+          <div>
+            <h4>B.Tech, Computer Science — APJ Abdul Kalam Technological University</h4>
+            <div class="meta">Kerala, India</div>
+          </div>
+        </div>
+        <div class="resume-block">
+          <span class="rlabel">Experience</span>
+          <div>
+            <h4>Software Development Engineer — Zdistancelab</h4>
+            <div class="meta">Trivandrum, Kerala, India · 2 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTIONS -->
+  <section id="reflections">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">marketing reflections</span>
+        <h2>Reflections</h2>
+        <p>Lessons, challenges, experiments, and insights from my journey in digital marketing.</p>
+      </div>
+      <div class="blog-grid reveal">
+        <article class="blog-card">
+          <div class="blog-thumb"><img src="https://picsum.photos/seed/reflect-seo/500/300" alt=""></div>
+          <div class="blog-body">
+            <div class="blog-meta"><span>Draft</span><span>·</span><span>SEO</span></div>
+            <h3>What I Learned From Developing an SEO Strategy</h3>
+            <p>Article placeholder — full post to be added.</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-thumb"><img src="https://picsum.photos/seed/reflect-career/500/300" alt=""></div>
+          <div class="blog-body">
+            <div class="blog-meta"><span>Draft</span><span>·</span><span>Career</span></div>
+            <h3>From Software Developer to Digital Marketer</h3>
+            <p>Article placeholder — full post to be added.</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-thumb"><img src="https://picsum.photos/seed/reflect-client/500/300" alt=""></div>
+          <div class="blog-body">
+            <div class="blog-meta"><span>Draft</span><span>·</span><span>Client Work</span></div>
+            <h3>What I Learned From Client-Based Marketing Projects</h3>
+            <p>Article placeholder — full post to be added.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">professional development</span>
+        <h2>Certifications &amp; Professional Development</h2>
+        <p>I continuously develop my digital marketing and technical skills through industry training and professional learning. These credentials reflect my experience with cloud technology, analytics, and digital measurement.</p>
+      </div>
+      <div class="cert-grid reveal">
+        <div class="cert-card">
+          <span class="issuer">Google Cloud</span>
+          <h3>Google Cloud Fundamentals</h3>
+          <p>Cloud computing fundamentals and core Google Cloud concepts.</p>
+        </div>
+        <div class="cert-card">
+          <span class="issuer">Google Cloud</span>
+          <h3>Architecting with Google Compute Engine</h3>
+          <p>Cloud infrastructure, compute resources, and Google Cloud architecture.</p>
+        </div>
+        <div class="cert-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <span class="issuer">Google</span>
+            <span class="label">Certificate/Training</span>
+          </div>
+          <h3>Google Analytics</h3>
+          <p>Website analytics, measurement, user behavior, and performance insights.</p>
+        </div>
+        <div class="cert-card">
+           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <span class="issuer">Google</span>
+            <span class="label">Certificate/Training</span>
+          </div>
+          <h3>Google Tag Manager</h3>
+          <p>Tag implementation, tracking configuration, and digital measurement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">what people say</span>
+        <h2>Project Feedback</h2>
+      </div>
+      <div class="reveal">
+        <div class="testim-grid">
+          <div class="testim-card">
+            <p>"Midhun did an incredible job rebuilding our website and boosting our local SEO. We've seen a noticeable uptick in local inquiries and walk-ins since the launch."</p>
+            <div class="testim-author">— Shop Manager, Cosmo Auto Services Ltd.</div>
+          </div>
+          <div class="testim-card">
+            <p>"Working with Midhun on our digital presence was seamless. Our search visibility has improved significantly, and the updates have made a huge impact on customer engagement."</p>
+            <div class="testim-author">— Owner, OZ Shower Doors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="tag">get in touch</span>
+          <h2>Let's connect.</h2>
+          <p class="lede">I'm always interested in connecting with professionals, businesses, and creative teams working in digital marketing, technology, and innovation.</p>
+          <ul class="clinks" id="clinks"></ul>
+        </div>
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="field" id="nameField">
+            <label for="cname">Name</label>
+            <input type="text" id="cname" name="name" required>
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div class="field" id="emailField">
+            <label for="cemail">Email</label>
+            <input type="email" id="cemail" name="email" required>
+            <div class="err">Please enter a valid email.</div>
+          </div>
+          <div class="field" id="msgField">
+            <label for="cmsg">Message</label>
+            <textarea id="cmsg" name="message" rows="5" required></textarea>
+            <div class="err">Please enter a message.</div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send message</button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-wrap">
+      <div>
+        <a href="#home" class="brand">midhun<span>.</span>baby</a>
+        <div class="tagline">Digital Marketing × Technology × Strategy</div>
+      </div>
+      <ul class="foot-links" id="footLinks"></ul>
+    </div>
+    <div class="copyright">© 2026 Midhun Baby. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const CONFIG = {
+  email: "mbaby@norquest.ca",       
+  linkedin: "https://linkedin.com/in/midhunbaby", 
+
+  projects: [
+    {
+      id: "cosmo-auto",
+      title: "Cosmo Auto Services",
+      category: "Website Development · Local SEO",
+      filters: ["web", "seo"],
+      accent: "brass",
+      image: "https://api.microlink.io/?url=https://cosmoauto.ca&screenshot=true&meta=false&embed=screenshot.url",
+      summary: "Website build and local SEO work for an auto services business in Edmonton.",
+      skills: ["Local SEO", "Web Dev"]
+    },
+    {
+      id: "luxirio-wear",
+      title: "Luxirio Wear",
+      category: "Shopify Development · Social Media",
+      filters: ["web", "social"],
+      accent: "clay",
+      image: "https://api.microlink.io/?url=https://luxirio.com&screenshot=true&meta=false&embed=screenshot.url",
+      summary: "Shopify storefront and content marketing for a women's and kids' clothing brand.",
+      skills: ["Shopify", "Content"]
+    },
+    {
+      id: "apeetogosan",
+      title: "Apeetogosan",
+      category: "Email Marketing · Landing Page · Analytics",
+      filters: ["email", "analytics"],
+      accent: "indigo",
+      image: "https://picsum.photos/seed/apeetogosan/640/400",
+      summary: "Email campaigns, a dedicated landing page, and analytics tracking.",
+      skills: ["Email", "Analytics"]
+    },
+    {
+      id: "doceo-ai",
+      title: "DOCEO AI",
+      category: "B2B Digital Marketing Strategy",
+      filters: ["analytics"],
+      accent: "rose",
+      image: "https://api.microlink.io/?url=https://doceo.ai&screenshot=true&meta=false&embed=screenshot.url",
+      summary: "Digital marketing strategy work for a B2B AI product.",
+      skills: ["B2B Strategy"]
+    },
+    {
+      id: "oz-shower-doors",
+      title: "Oz Shower Doors",
+      category: "Website · Google SEO",
+      filters: ["web", "seo"],
+      accent: "pine",
+      image: "https://api.microlink.io/?url=https://ozshowerdoors.com&screenshot=true&meta=false&embed=screenshot.url",
+      summary: "Website and SEO / content work for a shower door installation business in Edmonton.",
+      skills: ["SEO", "Content"]
+    }
+  ]
+};
+
+const accentVar = a => `var(--${a})`;
+
+// Render contact links (email, linkedin) from CONFIG
+function renderContactLinks(){
+  const clinks = document.getElementById('clinks');
+  const footLinks = document.getElementById('footLinks');
+  const items = [
+    { k: "Email", label: CONFIG.email, href: `mailto:${CONFIG.email}` },
+    { k: "LinkedIn", label: CONFIG.linkedin.replace(/^https?:\/\/(www\.)?/, ''), href: CONFIG.linkedin }
+  ];
+  clinks.innerHTML = items.map(i =>
+    `<li><a href="${i.href}" ${i.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}><span class="k">${i.k}</span> ${i.label}</a></li>`
+  ).join('');
+  footLinks.innerHTML = `
+    <li><a href="mailto:${CONFIG.email}">Email</a></li>
+    <li><a href="${CONFIG.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>`;
+}
+
+// Render project filter buttons + cards from CONFIG
+const FILTER_LABELS = { all: "All", seo: "SEO", social: "Social Media", email: "Email Marketing", web: "Website & UX", analytics: "Analytics" };
+function renderProjects(){
+  const filterWrap = document.getElementById('projFilter');
+  const grid = document.getElementById('projGrid');
+
+  filterWrap.innerHTML = Object.entries(FILTER_LABELS).map(([key, label], i) =>
+    `<button class="filter-btn ${i===0 ? 'active' : ''}" data-filter="${key}">${label}</button>`
+  ).join('');
+
+  grid.innerHTML = CONFIG.projects.map(p => `
+    <article class="proj-card" data-cat="${p.filters.join(' ')}">
+      <div class="proj-thumb">
+        <img src="${p.image}" alt="${p.title} project thumbnail" onerror="this.src='https://picsum.photos/seed/${p.id}/640/400';">
+        <div class="shade"></div>
+        <span>${p.id}/</span>
+      </div>
+      <div class="proj-body" style="--accent:${accentVar(p.accent)}">
+        <span class="proj-cat">${p.category}</span>
+        <h3>${p.title}</h3>
+        <p>${p.summary}</p>
+        <div class="proj-skills">${p.skills.map(s => `<span>${s}</span>`).join('')}</div>
+      </div>
+    </article>
+  `).join('');
+
+  filterWrap.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      grid.querySelectorAll('.proj-card').forEach(card => {
+        const cats = card.dataset.cat.split(' ');
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+}
+
+// Mobile nav toggle
+const burger = document.getElementById('burger');
+const navlinks = document.getElementById('navlinks');
+burger.addEventListener('click', () => {
+  const open = navlinks.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navlinks.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', false);
+}));
+
+// Scroll reveal
+function initReveal(){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+// Contact form validation
+const form = document.getElementById('contactForm');
+const status = document.getElementById('formStatus');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
+  const nameField = document.getElementById('nameField');
+  const emailField = document.getElementById('emailField');
+  const msgField = document.getElementById('msgField');
+  const name = document.getElementById('cname').value.trim();
+  const email = document.getElementById('cemail').value.trim();
+  const msg = document.getElementById('cmsg').value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  [nameField, emailField, msgField].forEach(f => f.classList.remove('invalid'));
+
+  if (!name) { nameField.classList.add('invalid'); valid = false; }
+  if (!emailOk) { emailField.classList.add('invalid'); valid = false; }
+  if (!msg) { msgField.classList.add('invalid'); valid = false; }
+
+  if (!valid) {
+    status.textContent = 'Please fix the highlighted fields.';
+    status.style.color = '#B4442E';
+    return;
+  }
+  status.textContent = 'Form looks good — connect this to Formspree, Netlify Forms, or an email API to actually send it.';
+  status.style.color = '#2F5D50';
+  form.reset();
+});
+
+// Init
+renderContactLinks();
+renderProjects();
+initReveal();
+</script>
+
+</body>
+</html>
